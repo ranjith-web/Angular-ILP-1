@@ -1,0 +1,20 @@
+{
+  "issueTracker": [
+    {
+      "description": "Test 2",
+      "severity": "Minor",
+      "status": "Open",
+      "created_date": "2018-11-19T18:30:00.000Z",
+      "resolved_date": "2018-11-25T18:30:00.000Z",
+      "id": 1
+    },
+    {
+      "description": "Test 114",
+      "severity": "Critical",
+      "status": "Open",
+      "created_date": "2018-11-04T18:30:00.000Z",
+      "resolved_date": "2018-11-07T18:30:00.000Z",
+      "id": 2
+    }
+  ]
+}

@@ -1,0 +1,11 @@
+{
+    "/issueTracking/issueTracker": {
+      "target": "http://localhost:3000/issueTracker",
+      "secure": false
+    },
+    "/issueTracking/universe/planets": {
+      "target": "http://localhost:3000",
+      "secure": false,
+      "pathRewrite": {"^/planets": "/planets"}
+    }
+}

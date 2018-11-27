@@ -1,0 +1,60 @@
+<div class="addIssues-wrapper col-md-8">
+    <h2>ADD ISSUES</h2>
+  <div class="mat-elevation-z8">
+    <div class="container">      
+      <form class="form-horizontal addIssues-form">
+        <div class="form-group">
+          <div class="col-sm-4">
+              <mat-form-field>  
+                <mat-select placeholder="Severity:" [(ngModel)]="model.severity" name="severity">
+                  <mat-option value="Major">Major</mat-option>
+                  <mat-option value="Minor">Minor</mat-option>
+                  <mat-option value="Critical">Critical</mat-option>
+                </mat-select>
+              </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">          
+            <mat-form-field>
+              <textarea matInput placeholder="Description:" [(ngModel)]="model.description" name="description"></textarea>
+            </mat-form-field>
+          </div>
+        </div>
+        <div class="form-group">
+            <div class="col-sm-4">
+              <mat-form-field>
+                <mat-select placeholder="Status"  [(ngModel)]="model.status" name="status">
+                  <mat-option value="In Progress">In Progress</mat-option>
+                  <mat-option value="Closed">Closed</mat-option>
+                  <mat-option value="Open">Open</mat-option>
+                </mat-select>
+              </mat-form-field>    
+            </div>        
+        </div>
+        
+        <div class="form-group">
+          <div class="col-sm-4">
+            <mat-form-field>
+              <input matInput [matDatepicker]="cdPicker" placeholder="Created Date:" [(ngModel)]="model.created_date" name="created_date">
+              <mat-datepicker-toggle matSuffix [for]="cdPicker"></mat-datepicker-toggle>
+              <mat-datepicker #cdPicker></mat-datepicker>
+            </mat-form-field>    
+          </div>   
+        </div>
+        <div class="form-group">
+          <div class="col-sm-4">
+            <mat-form-field>
+              <input matInput [matDatepicker]="rdPicker" placeholder="Resolved Date:" [(ngModel)]="model.resolved_date" name="resolved_date">
+              <mat-datepicker-toggle matSuffix [for]="rdPicker"></mat-datepicker-toggle>
+              <mat-datepicker #rdPicker></mat-datepicker>
+            </mat-form-field>    
+          </div>   
+        </div>
+        <button *ngIf="!editOrAddButtonDisplay" mat-raised-button color="primary" (click)="createIssues();">Submit</button>
+        <button *ngIf="editOrAddButtonDisplay" mat-raised-button color="primary" (click)="updateIssues();">Update</button>
+        <mat-spinner *ngIf="loader"></mat-spinner>
+      </form>
+    </div>
+  </div>      
+</div>

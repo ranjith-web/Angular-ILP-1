@@ -1,0 +1,32 @@
+.action-icons{
+    font-size:20px;
+    margin-right: 10px;
+    cursor: pointer;
+}
+
+.mat-form-field {
+    font-size: 14px;
+    width: 100%;
+  }
+
+  .container {
+    display: flex;
+    flex-direction: column;
+    
+  }
+  .addIssues-form{
+      margin: 30px;
+  }
+  mat-form-field{
+      display: block;
+  }
+  
+  .issuesLists-wrapper{
+      text-align:center; 
+      margin-top:20px;
+      margin: 0 auto;
+  }
+  
+  .issues--action-btn button{      
+        margin: 10px;      
+  }
