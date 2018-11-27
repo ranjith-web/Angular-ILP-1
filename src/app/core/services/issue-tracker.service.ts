@@ -51,35 +51,34 @@ export class IssueTrackerService {
     .put(this.serviceUrl+"/"+_id, issue)
     .pipe(
       map(response => {
-        // this.store.dispatch(
-        //   {
-        //     type:"UPDATE_ISSUE", 
-        //     payload:
-        //       {
-        //         id: _id,
-        //         data: issue
-        //       }
-        //   )
-
+        this.store.dispatch(
+          {
+            type:"UPDATE_ISSUE", 
+            payload:
+              {
+                id: _id,
+                data: issue
+              }
+          })
         return response;
-        
       })      
     )    
   }
 
-  deleteIssues (_id): Observable<any> {
+  deleteIssues (_id: string): Observable<any> {
     return this.http
     .delete(this.serviceUrl+"/"+_id)
     .pipe(
       map(response => {
-        // this.store.dispatch(
-        //   {
-        //     type:"DELETE_ISSUE", 
-        //     payload:
-        //       {
-        //         id: _id
-        //       }
-        //   )
+        this.store.dispatch(
+          {
+            type:"DELETE_ISSUE", 
+            payload:
+              {
+                id: _id
+              }
+            }
+          )
         return response;
       })   
     )    

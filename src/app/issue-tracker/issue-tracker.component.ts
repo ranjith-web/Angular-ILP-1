@@ -79,7 +79,7 @@ export class IssueTrackerComponent implements OnInit, AfterViewInit {
   deleteIssues(): void{
     this.loader = true;
     for(var i = 0; i < this.selection.selected.length; i++){
-      this.issueTrackerService.deleteIssues(this.selection.selected[i].id).subscribe(res => {
+      this.issueTrackerService.deleteIssues(this.selection.selected[i]["id"]).subscribe(res => {
         this.loader = false;
         let snackBarRef = this.snackBar.open("Issued Deleted successfully", "", {
           duration: 2000,
