@@ -1,5 +1,6 @@
 <div class="addIssues-wrapper col-md-8">
-    <h2>ADD ISSUES</h2>
+  <h2 *ngIf="!editOrAddButtonDisplay">ADD ISSUES</h2>  
+  <h2 *ngIf="editOrAddButtonDisplay">Edit ISSUES</h2>
   <div class="mat-elevation-z8">
     <div class="container">      
       <form class="form-horizontal addIssues-form">
