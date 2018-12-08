@@ -18,10 +18,20 @@ import { IssueTrackerLists } from '../core/model/issue-tracker.model';
 })
 export class IssueTrackerComponent implements OnInit, AfterViewInit {
   dataSource: IssueTrackerDataSource;
-  displayedColumns = ['select','description', 'severity', 'status', 'created_date', 'resolved_date', 'action'];
+  displayedColumns: any = ['select','description', 'severity', 'status', 'created_date', 'resolved_date', 'action'];
+  issueColumns = [
+    {name: 'Description', col: 'description', checked:false, _index: "1"},
+    {name: 'Severity', col: 'severity', checked:false, _index: "2"},
+    {name: 'Status', col: 'status', checked:false, _index: "3"},
+    {name: 'Created Date', col: 'created_date', checked:false, _index: "4"},
+    {name: 'Resolved Date', col: 'resolved_date', checked:false, _index: "5"}
+  ];
+  selectedColumns = [];
   loader : boolean = false;
   selection = new SelectionModel<IssueTrackerLists[]>(true, []);
   issueItems = [];
+  count = 0;
+
   @ViewChild(MatPaginator) paginator: MatPaginator;
   
   constructor(private issueTrackerService: IssueTrackerService,
@@ -60,6 +70,25 @@ export class IssueTrackerComponent implements OnInit, AfterViewInit {
     return numSelected === numRows;
   }
 
+  /* To Hide the columns from the issue table */
+  changed(item){
+    this.count = 0;    
+    const _index = this.search(item.col, this.displayedColumns);  
+    if(item.checked){
+        this.displayedColumns.splice(_index,1);
+      }else{
+        this.displayedColumns.splice([item._index], "0", item.col);
+      }
+  }
+
+ search(nameKey, myArray){
+    for (var i=0; i < myArray.length; i++) {
+        if (myArray[i] === nameKey) {
+            return i;
+        }
+    }
+}
+
   /** Selects all rows if they are not all selected; otherwise clear selection. */
   masterToggle() {
     this.isAllSelected() ?
@@ -76,6 +105,7 @@ export class IssueTrackerComponent implements OnInit, AfterViewInit {
   updateIssue(_id): void{
     this.router.navigateByUrl('/edit-issues/'+_id);
   }
+  
   deleteIssues(): void{
     this.loader = true;
     for(var i = 0; i < this.selection.selected.length; i++){

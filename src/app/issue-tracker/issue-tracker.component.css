@@ -30,3 +30,15 @@
   .issues--action-btn button{      
         margin: 10px;      
   }
+
+  .wrapper-section{
+    display: flex;
+    align-content: center;
+    align-items: center;
+    height: 60px;
+  }
+
+  .wrapper-checkbox{
+    margin: 0 10px;
+    list-style: none;
+  }

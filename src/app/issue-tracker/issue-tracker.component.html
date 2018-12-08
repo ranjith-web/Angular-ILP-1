@@ -4,6 +4,11 @@
   </h1>
   <h2>Issue Lists</h2>
   <div class="mat-elevation-z8">
+    <section class="wrapper-section">
+      <label *ngFor="let col of issueColumns">
+        <mat-checkbox class="wrapper-checkbox" (change)="changed(col)" [(ngModel)]="col.checked" [checked]="col.checked">{{ col.name }}</mat-checkbox>
+      </label>
+    </section>
     <div class="pull-right issues--action-btn">
         <button mat-raised-button color="primary" (click)="addIssues();">Add Issues</button>
         <button mat-raised-button color="primary" (click)="deleteIssues();">Delete Issues</button>
@@ -60,7 +65,7 @@
         </mat-cell>
       </ng-container>
       <mat-header-row *matHeaderRowDef="displayedColumns"></mat-header-row>
-      <mat-row *matRowDef="let row; columns: displayedColumns;"></mat-row>
+      <mat-row *matRowDef="let row; columns: displayedColumns"></mat-row>
     </mat-table>
     <div *ngIf="issueItems.length === 0">No records found</div>
   
